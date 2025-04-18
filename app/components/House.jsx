@@ -47,6 +47,9 @@ export default function Houses({ houses, removeHouse }) {
         if (e.shiftKey) {
           removeHouse(id);
         }
+        else if (selectedItem == "eraser") {
+          removeHouse(id);
+        }
       }}
     />
   ));

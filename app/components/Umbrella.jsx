@@ -48,6 +48,9 @@ export default function Umbrellas({ umbrellas, removeUmbrella }) {
         if (e.shiftKey) {
             removeUmbrella(id);
         }
+        else if (selectedItem == "eraser") {
+            removeUmbrella(id);
+        }
       }}
     />
   ));

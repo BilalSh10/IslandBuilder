@@ -81,23 +81,15 @@ export default function Cubes({
       key={id}
       position={position}
       onClick={(e) => {
+        console.log(selectedItem)
         e.stopPropagation();
-        console.log(e);
         if (e.shiftKey) {
+          removeCube(id);
+        } else if (selectedItem == "eraser") {
           removeCube(id);
         } else {
           handleAddingItems(e, position, id);
         }
-      }}
-      onTouchStart={(e) => {
-        this.touchTimer = setTimeout(() => {
-          removeCube(id);
-        }, 500); // 500ms long press
-        e.stopPropagation();
-      }}
-      onTouchEnd={(e) => {
-        clearTimeout(this.touchTimer);
-        e.stopPropagation();
       }}
     />
   ));

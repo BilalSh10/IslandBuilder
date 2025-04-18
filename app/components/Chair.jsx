@@ -48,6 +48,9 @@ export default function Chairs({ chairs, removeChair }) {
         if (e.shiftKey) {
           removeChair(id);
         }
+        else if (selectedItem == "eraser") {
+          removeChair(id);
+        }
       }}
     />
   ));

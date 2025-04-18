@@ -48,6 +48,9 @@ export default function Trees({ trees, removeTree }) {
         if (e.shiftKey) {
           removeTree(id);
         }
+        else if (selectedItem == "eraser") {
+          removeTree(id);
+        }
       }}
     />
   ));

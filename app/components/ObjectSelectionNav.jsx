@@ -59,6 +59,16 @@ const ObjectSelectionNav = ({ selectedItem, setSelectedItem }) => {
           } object-contain border-6 cursor-pointer rounded-lg flex-shrink-0`}
           onClick={() => SelectionHandle("none")}
         />
+        <Image
+          src="/images/eraser.jpg"
+          alt="eraser"
+          width={80}
+          height={80}
+          className={`${
+            selectedItem == "eraser" ? "border-green-300" : "border-red-300"
+          } object-contain border-6 cursor-pointer rounded-lg flex-shrink-0 md:hidden`}
+          onClick={() => SelectionHandle("eraser")}
+        />
       </div>
     </div>
   );

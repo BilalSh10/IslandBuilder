@@ -74,10 +74,10 @@ const Experince = ({ selectedItem }) => {
         selectedItem={selectedItem}
       />
       <Plane addCube={addCube} />
-      <Trees trees={trees} removeTree={removeTree} />
-      <Chairs chairs={chairs} removeChair={removeChair} />
-      <Houses houses={houses} removeHouse={removeHouse} />
-      <Umbrellas umbrellas={umbrellas} removeUmbrella={removeUmbrella} />
+      <Trees trees={trees} removeTree={removeTree} selectedItem={selectedItem}/>
+      <Chairs chairs={chairs} removeChair={removeChair} selectedItem={selectedItem}/>
+      <Houses houses={houses} removeHouse={removeHouse} selectedItem={selectedItem} />
+      <Umbrellas umbrellas={umbrellas} removeUmbrella={removeUmbrella} selectedItem={selectedItem}/>
       <Water />
       <Sky />
     </>
