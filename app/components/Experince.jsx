@@ -1,8 +1,7 @@
 // "use client";
-import React, { useState, Suspense } from "react";
+import React, { useState } from "react";
 import {
   OrbitControls,
-  Environment,
   Sky,
   ContactShadows,
 } from "@react-three/drei";
@@ -63,7 +62,7 @@ const Experince = ({ selectedItem }) => {
 
   return (
     <>
-      <Perf position="top-left" />
+      {/* <Perf position="top-left" /> */}
       <ContactShadows />
       <OrbitControls
         makeDefault
