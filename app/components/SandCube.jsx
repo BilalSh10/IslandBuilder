@@ -34,7 +34,7 @@ export default function Cubes({
   selectedItem,
   addChair,
   addHouse,
-  addUmbrella
+  addUmbrella,
 }) {
   const handleAddingItems = (e, position, id) => {
     if (selectedItem == "tree") {
@@ -63,8 +63,7 @@ export default function Cubes({
         position: housePosition,
         id: Date.now(),
       });
-    }
-    else if (selectedItem == "umbrella") {
+    } else if (selectedItem == "umbrella") {
       const umbrellaPosition = new Vector3(
         position.x,
         position.y + 1.9,
@@ -83,11 +82,22 @@ export default function Cubes({
       position={position}
       onClick={(e) => {
         e.stopPropagation();
+        console.log(e);
         if (e.shiftKey) {
           removeCube(id);
         } else {
           handleAddingItems(e, position, id);
         }
+      }}
+      onTouchStart={(e) => {
+        this.touchTimer = setTimeout(() => {
+          removeCube(id);
+        }, 500); // 500ms long press
+        e.stopPropagation();
+      }}
+      onTouchEnd={(e) => {
+        clearTimeout(this.touchTimer);
+        e.stopPropagation();
       }}
     />
   ));

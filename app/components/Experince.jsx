@@ -61,10 +61,8 @@ const Experince = ({ selectedItem }) => {
       <Environment preset="city" />
       <OrbitControls
         makeDefault
-        // maxAzimuthAngle={Math.PI / 6}
         maxPolarAngle={Math.PI / 2.4}
         minPolarAngle={Math.PI / 5}
-        // minAzimuthAngle={Math.PI /2}
       />
       <Cubes
         cubes={cubes}

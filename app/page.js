@@ -5,7 +5,7 @@ import ObjectSelectionNav from "./components/ObjectSelectionNav";
 import { useState } from "react";
 
 export default function IslandBuilder() {
-  const [selectedItem, setSelectedItem] = useState("tree");
+  const [selectedItem, setSelectedItem] = useState("none");
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
