@@ -1,6 +1,6 @@
 // "use client";
 import React, { useState } from "react";
-import { OrbitControls, Environment, Sky } from "@react-three/drei";
+import { OrbitControls, Environment, Sky, ContactShadows } from "@react-three/drei";
 import Water from "./Water";
 import { Perf } from "r3f-perf";
 import Cubes from "./SandCube";
@@ -58,6 +58,7 @@ const Experince = ({ selectedItem }) => {
   return (
     <>
       <Perf position="top-left" />
+      <ContactShadows/>
       <Environment preset="city" />
       <OrbitControls
         makeDefault

@@ -38,7 +38,7 @@ function ChairModel({ position, onClick }) {
   );
 }
 
-export default function Chairs({ chairs, removeChair }) {
+export default function Chairs({ chairs, removeChair, selectedItem }) {
   return chairs.map(({ position, id }) => (
     <ChairModel
       key={id}

@@ -37,7 +37,7 @@ function HouseModel({ position, onClick }) {
   );
 }
 
-export default function Houses({ houses, removeHouse }) {
+export default function Houses({ houses, removeHouse, selectedItem }) {
   return houses.map(({ position, id }) => (
     <HouseModel
       key={id}
@@ -46,8 +46,7 @@ export default function Houses({ houses, removeHouse }) {
         e.stopPropagation();
         if (e.shiftKey) {
           removeHouse(id);
-        }
-        else if (selectedItem == "eraser") {
+        } else if (selectedItem == "eraser") {
           removeHouse(id);
         }
       }}

@@ -38,7 +38,7 @@ function TreesModel({ position, onClick }) {
   );
 }
 
-export default function Trees({ trees, removeTree }) {
+export default function Trees({ trees, removeTree, selectedItem }) {
   return trees.map(({ position, id }) => (
     <TreesModel
       key={id}

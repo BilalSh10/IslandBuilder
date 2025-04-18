@@ -38,7 +38,7 @@ function UmbrellaModel({ position, onClick }) {
   );
 }
 
-export default function Umbrellas({ umbrellas, removeUmbrella }) {
+export default function Umbrellas({ umbrellas, removeUmbrella, selectedItem }) {
   return umbrellas.map(({ position, id }) => (
     <UmbrellaModel
       key={id}
