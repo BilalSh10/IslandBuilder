@@ -1,8 +1,7 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import { useState } from "react";
 
-function HouseModel({ position, onClick }) {
-  const { nodes } = useGLTF("./models/beachHouse.glb");
+function HouseModel({ position, onClick, nodes }) {
   const [rotation, setRotation] = useState(0); // State to track rotation
 
   const treeTexture = useTexture("./textures/bakedHouseTexture.png");
@@ -16,31 +15,34 @@ function HouseModel({ position, onClick }) {
   };
 
   return (
-    <group>
-      {nodes.beachHouse.children.map((item, index) => (
-        <mesh
-          key={index}
-          position={position}
-          onClick={handleClick}
-          geometry={item.geometry}
-          rotation={[
-            item.rotation.x,
-            item.rotation.y + rotation,
-            item.rotation.z,
-          ]}
-          scale={1}
-        >
-          <meshBasicMaterial map={treeTexture} />
-        </mesh>
-      ))}
-    </group>
+      <group>
+        {nodes.beachHouse.children.map((item, index) => (
+          <mesh
+            key={index}
+            position={position}
+            onClick={handleClick}
+            geometry={item.geometry}
+            rotation={[
+              item.rotation.x,
+              item.rotation.y + rotation,
+              item.rotation.z,
+            ]}
+            scale={1}
+          >
+            <meshBasicMaterial map={treeTexture} />
+          </mesh>
+        ))}
+      </group>
   );
 }
 
 export default function Houses({ houses, removeHouse, selectedItem }) {
+  const { nodes } = useGLTF("./models/beachHouse.glb");
+
   return houses.map(({ position, id }) => (
     <HouseModel
       key={id}
+      nodes={nodes}
       position={position}
       onClick={(e) => {
         e.stopPropagation();
@@ -53,3 +55,7 @@ export default function Houses({ houses, removeHouse, selectedItem }) {
     />
   ));
 }
+
+
+useGLTF.preload("./models/beachHouse.glb");
+useTexture.preload("./textures/bakedHouseTexture.png");

@@ -1,8 +1,7 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import { useState } from "react";
 
-function TreesModel({ position, onClick }) {
-  const { nodes } = useGLTF("./models/tree.glb");
+function TreesModel({ position, onClick, nodes }) {
   const [rotation, setRotation] = useState(0); // State to track rotation
 
   const treeTexture = useTexture("./textures/bakedTreeTexture.png");
@@ -28,7 +27,7 @@ function TreesModel({ position, onClick }) {
             item.rotation.y + rotation,
             item.rotation.z,
           ]}
-          scale={[0.5,1,0.5]}
+          scale={[0.5, 1, 0.5]}
           castShadow
         >
           <meshBasicMaterial map={treeTexture} />
@@ -39,19 +38,24 @@ function TreesModel({ position, onClick }) {
 }
 
 export default function Trees({ trees, removeTree, selectedItem }) {
+  const { nodes } = useGLTF("./models/tree.glb");
+
   return trees.map(({ position, id }) => (
     <TreesModel
       key={id}
+      nodes={nodes}
       position={position}
       onClick={(e) => {
         e.stopPropagation();
         if (e.shiftKey) {
           removeTree(id);
-        }
-        else if (selectedItem == "eraser") {
+        } else if (selectedItem == "eraser") {
           removeTree(id);
         }
       }}
     />
   ));
 }
+
+useGLTF.preload("./models/tree.glb");
+useTexture.preload("./textures/bakedTreeTexture.png");

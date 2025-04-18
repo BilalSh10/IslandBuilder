@@ -2,20 +2,34 @@
 import { Canvas } from "@react-three/fiber";
 import Experince from "./components/Experince";
 import ObjectSelectionNav from "./components/ObjectSelectionNav";
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import LoadingScreen from "./components/LoadingScreen";
 
 export default function IslandBuilder() {
   const [selectedItem, setSelectedItem] = useState("none");
+  const [started, setStarted] = useState(false);
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <Canvas flat shadows camera={{ position: [5, 20, 20], fov: 45 }}>
-        <Experince selectedItem={selectedItem}/>
+        <Suspense>
+          {!started ? (
+            <LoadingScreen
+              started={started}
+              onStarted={() => setStarted(true)}
+            />
+          ) : (
+            <Experince selectedItem={selectedItem} />
+          )}
+        </Suspense>
       </Canvas>
-      <ObjectSelectionNav
-        selectedItem={selectedItem}
-        setSelectedItem={setSelectedItem}
-      />
+
+      {started && (
+        <ObjectSelectionNav
+          selectedItem={selectedItem}
+          setSelectedItem={setSelectedItem}
+        />
+      )}
     </div>
   );
 }

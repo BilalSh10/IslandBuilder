@@ -1,8 +1,7 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import { useState } from "react";
 
-function ChairModel({ position, onClick }) {
-  const { nodes } = useGLTF("./models/beachChair.glb");
+function ChairModel({ position, onClick, nodes }) {
   const [rotation, setRotation] = useState(0); // State to track rotation
 
   const chairTexture = useTexture("./textures/bakedChairTexture.png");
@@ -39,19 +38,24 @@ function ChairModel({ position, onClick }) {
 }
 
 export default function Chairs({ chairs, removeChair, selectedItem }) {
+  const { nodes } = useGLTF("./models/beachChair.glb");
+
   return chairs.map(({ position, id }) => (
     <ChairModel
       key={id}
+      nodes={nodes}
       position={position}
       onClick={(e) => {
         e.stopPropagation();
         if (e.shiftKey) {
           removeChair(id);
-        }
-        else if (selectedItem == "eraser") {
+        } else if (selectedItem == "eraser") {
           removeChair(id);
         }
       }}
     />
   ));
 }
+
+useGLTF.preload("./models/beachChair.glb");
+useTexture.preload("./textures/bakedChairTexture.png");

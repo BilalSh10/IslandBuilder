@@ -1,8 +1,7 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import { useState } from "react";
 
-function UmbrellaModel({ position, onClick }) {
-  const { nodes } = useGLTF("./models/umbrella.glb");
+function UmbrellaModel({ position, onClick, nodes }) {
   const [rotation, setRotation] = useState(0); // State to track rotation
 
   const chairTexture = useTexture("./textures/bakedUmbrellaTexture.png");
@@ -39,19 +38,25 @@ function UmbrellaModel({ position, onClick }) {
 }
 
 export default function Umbrellas({ umbrellas, removeUmbrella, selectedItem }) {
+  const { nodes } = useGLTF("./models/umbrella.glb");
+
   return umbrellas.map(({ position, id }) => (
     <UmbrellaModel
       key={id}
+      nodes={nodes}
       position={position}
       onClick={(e) => {
         e.stopPropagation();
         if (e.shiftKey) {
-            removeUmbrella(id);
-        }
-        else if (selectedItem == "eraser") {
-            removeUmbrella(id);
+          removeUmbrella(id);
+        } else if (selectedItem == "eraser") {
+          removeUmbrella(id);
         }
       }}
     />
   ));
 }
+
+
+useGLTF.preload("./models/umbrella.glb");
+useTexture.preload("./textures/bakedUmbrellaTexture.png");

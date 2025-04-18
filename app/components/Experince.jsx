@@ -1,6 +1,11 @@
 // "use client";
-import React, { useState } from "react";
-import { OrbitControls, Environment, Sky, ContactShadows } from "@react-three/drei";
+import React, { useState, Suspense } from "react";
+import {
+  OrbitControls,
+  Environment,
+  Sky,
+  ContactShadows,
+} from "@react-three/drei";
 import Water from "./Water";
 import { Perf } from "r3f-perf";
 import Cubes from "./SandCube";
@@ -9,6 +14,7 @@ import Trees from "./Trees";
 import Chairs from "./Chair";
 import Houses from "./House";
 import Umbrellas from "./Umbrella";
+
 const Experince = ({ selectedItem }) => {
   const [cubes, setCubes] = useState([]);
   const [trees, setTrees] = useState([]);
@@ -58,27 +64,42 @@ const Experince = ({ selectedItem }) => {
   return (
     <>
       <Perf position="top-left" />
-      <ContactShadows/>
-      <Environment preset="city" />
+      <ContactShadows />
       <OrbitControls
         makeDefault
         maxPolarAngle={Math.PI / 2.4}
         minPolarAngle={Math.PI / 5}
       />
-      <Cubes
-        cubes={cubes}
-        removeCube={removeCube}
-        addTree={addTree}
-        addChair={addChair}
-        addHouse={addHouse}
-        addUmbrella={addUmbrella}
-        selectedItem={selectedItem}
-      />
-      <Plane addCube={addCube} />
-      <Trees trees={trees} removeTree={removeTree} selectedItem={selectedItem}/>
-      <Chairs chairs={chairs} removeChair={removeChair} selectedItem={selectedItem}/>
-      <Houses houses={houses} removeHouse={removeHouse} selectedItem={selectedItem} />
-      <Umbrellas umbrellas={umbrellas} removeUmbrella={removeUmbrella} selectedItem={selectedItem}/>
+        <Cubes
+          cubes={cubes}
+          removeCube={removeCube}
+          addTree={addTree}
+          addChair={addChair}
+          addHouse={addHouse}
+          addUmbrella={addUmbrella}
+          selectedItem={selectedItem}
+        />
+        <Trees
+          trees={trees}
+          removeTree={removeTree}
+          selectedItem={selectedItem}
+        />
+        <Chairs
+          chairs={chairs}
+          removeChair={removeChair}
+          selectedItem={selectedItem}
+        />
+        <Houses
+          houses={houses}
+          removeHouse={removeHouse}
+          selectedItem={selectedItem}
+        />
+        <Umbrellas
+          umbrellas={umbrellas}
+          removeUmbrella={removeUmbrella}
+          selectedItem={selectedItem}
+        />
+        <Plane addCube={addCube} />
       <Water />
       <Sky />
     </>

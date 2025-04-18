@@ -2,8 +2,7 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import { Vector3 } from "three";
 
 // Sand Cube Component
-function SandCubeModel({ position, onClick }) {
-  const { nodes } = useGLTF("./models/sandCube.glb");
+function SandCubeModel({ position, onClick, nodes }) {
   const sandCubeTexture = useTexture("./textures/sandTextureBaking.png");
   sandCubeTexture.flipY = false;
 
@@ -76,12 +75,14 @@ export default function Cubes({
     }
   };
 
+  const { nodes } = useGLTF("./models/sandCube.glb");
+
   return cubes.map(({ position, id }) => (
     <SandCubeModel
       key={id}
+      nodes={nodes}
       position={position}
       onClick={(e) => {
-        console.log(selectedItem)
         e.stopPropagation();
         if (e.shiftKey) {
           removeCube(id);
@@ -94,3 +95,7 @@ export default function Cubes({
     />
   ));
 }
+
+
+useGLTF.preload("./models/sandCube.glb");
+useTexture.preload("./textures/sandTextureBaking.png");
