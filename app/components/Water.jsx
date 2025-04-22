@@ -9,12 +9,12 @@ const WaterShader = () => {
   const uniforms = useRef({
     uTime: { value: 0.0 },
     uSpeed: { value: 1.0 },
-    uWaveFrequency: { value: 0.3 },
+    uWaveFrequency: { value: 0.25 },
     uWaveDepth: { value: 0.22 },
     uDepthColor: { value: new THREE.Color("#003362") },
     uSurfaceColor: { value: new THREE.Color("#3b9dbe") },
     uColorOffset: { value: 2 },
-    uColorMultipled: { value: 3.0 },
+    uColorMultipled: { value: 2.0 },
   }).current;
 
   const {
@@ -27,12 +27,12 @@ const WaterShader = () => {
     uColorMultipled,
   } = useControls({
     uSpeed: { value: 1.0, min: 0.0, max: 20.0, step: 0.1 },
-    uWaveFrequency: { value: 0.3, min: 0.0, max: 20.0, step: 0.1 },
+    uWaveFrequency: { value: 0.25, min: 0.0, max: 20.0, step: 0.1 },
     uWaveDepth: { value: 0.22, min: 0.0, max: 1.0, step: 0.01 },
     uDepthColor: { value: "#003362" },
     uSurfaceColor: { value: "#3b9dbe" },
     uColorOffset: { value: 2, min: 0.0, max: 2.0, step: 0.1 },
-    uColorMultipled: { value: 3.0, min: 0.0, max: 15.0, step: 1.0 },
+    uColorMultipled: { value: 2.0, min: 0.0, max: 15.0, step: 1.0 },
   });
 
   useFrame((state) => {
@@ -166,11 +166,12 @@ const WaterShader = () => {
           void main(){
               float mixStrength = (vElevation * uColorMultipled + uColorOffset);
               vec3 color = mix(uDepthColor, uSurfaceColor, mixStrength);
-              gl_FragColor = vec4(color, 1.0);    
+              gl_FragColor = vec4(color, 0.7);    
           }
         `}
         side={THREE.DoubleSide}
         uniforms={uniforms}
+        transparent
       />
     </mesh>
   );
