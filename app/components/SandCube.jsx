@@ -19,7 +19,6 @@ function SandCubeModel({ position, onClick, nodes }) {
       geometry={nodes.sandCube.geometry}
       rotation={nodes.sandCube.rotation}
       scale={[1, 1, 1]}
-      receiveShadow
     >
       <meshBasicMaterial map={sandCubeTexture} />
     </mesh>

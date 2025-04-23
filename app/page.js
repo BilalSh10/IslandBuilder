@@ -11,7 +11,7 @@ export default function IslandBuilder() {
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      <Canvas flat shadows camera={{ position: [5, 20, 20], fov: 45 }}>
+      <Canvas flat camera={{ position: [5, 20, 20], fov: 45 }}>
         <Suspense>
           {!started ? (
             <LoadingScreen

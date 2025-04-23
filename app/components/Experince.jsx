@@ -63,7 +63,6 @@ const Experince = ({ selectedItem }) => {
   return (
     <>
       {/* <Perf position="top-left" /> */}
-      <ContactShadows />
       <OrbitControls
         makeDefault
         maxPolarAngle={Math.PI / 2.4}
