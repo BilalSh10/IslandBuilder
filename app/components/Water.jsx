@@ -17,36 +17,9 @@ const WaterShader = () => {
     uColorMultipled: { value: 2.0 },
   }).current;
 
-  const {
-    uSpeed,
-    uWaveFrequency,
-    uWaveDepth,
-    uDepthColor,
-    uSurfaceColor,
-    uColorOffset,
-    uColorMultipled,
-  } = useControls({
-    uSpeed: { value: 1.0, min: 0.0, max: 20.0, step: 0.1 },
-    uWaveFrequency: { value: 0.25, min: 0.0, max: 20.0, step: 0.1 },
-    uWaveDepth: { value: 0.22, min: 0.0, max: 1.0, step: 0.01 },
-    uDepthColor: { value: "#003362" },
-    uSurfaceColor: { value: "#3b9dbe" },
-    uColorOffset: { value: 2, min: 0.0, max: 2.0, step: 0.1 },
-    uColorMultipled: { value: 2.0, min: 0.0, max: 15.0, step: 1.0 },
-  });
-
   useFrame((state) => {
     const elapsedTime = state.clock.getElapsedTime();
     uniforms.uTime.value = elapsedTime;
-
-    // Update uniforms with Leva values
-    uniforms.uWaveFrequency.value = uWaveFrequency;
-    uniforms.uWaveDepth.value = uWaveDepth;
-    uniforms.uDepthColor.value.set(new THREE.Color(uDepthColor));
-    uniforms.uSurfaceColor.value.set(new THREE.Color(uSurfaceColor));
-    uniforms.uColorOffset.value = uColorOffset;
-    uniforms.uColorMultipled.value = uColorMultipled;
-    uniforms.uSpeed.value = uSpeed;
   });
 
   return (
