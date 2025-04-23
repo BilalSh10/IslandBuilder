@@ -7,7 +7,7 @@ const ObjectSelectionNav = ({ selectedItem, setSelectedItem }) => {
   };
 
   return (
-    <div className="rounded-2xl absolute bg-white bottom-6 left-0 right-0 mx-auto w-max max-w-[90%] p-4 overflow-x-auto">
+    <div className="rounded-2xl absolute  bottom-6 left-0 right-0 mx-auto w-max max-w-[90%] p-4 overflow-x-auto bg-black/20 backdrop-blur ">
       <div className="flex flex-row gap-8 items-center">
         <Image
           src="/images/treePicture.png"
@@ -16,7 +16,7 @@ const ObjectSelectionNav = ({ selectedItem, setSelectedItem }) => {
           height={80}
           className={`${
             selectedItem == "tree" ? "border-green-300" : "border-red-300"
-          } object-contain border-6 cursor-pointer rounded-lg flex-shrink-0`}
+          } object-contain border-3 cursor-pointer rounded-lg flex-shrink-0`}
           onClick={() => SelectionHandle("tree")}
         />
         <Image
@@ -26,7 +26,7 @@ const ObjectSelectionNav = ({ selectedItem, setSelectedItem }) => {
           height={80}
           className={`${
             selectedItem == "house" ? "border-green-300" : "border-red-300"
-          } object-contain border-6 cursor-pointer rounded-lg flex-shrink-0`}
+          } object-contain border-3 cursor-pointer rounded-lg flex-shrink-0`}
           onClick={() => SelectionHandle("house")}
         />
         <Image
@@ -36,7 +36,7 @@ const ObjectSelectionNav = ({ selectedItem, setSelectedItem }) => {
           height={80}
           className={`${
             selectedItem == "chair" ? "border-green-300" : "border-red-300"
-          } object-contain border-6 cursor-pointer rounded-lg flex-shrink-0`}
+          } object-contain border-3 cursor-pointer rounded-lg flex-shrink-0`}
           onClick={() => SelectionHandle("chair")}
         />
         <Image
@@ -46,7 +46,7 @@ const ObjectSelectionNav = ({ selectedItem, setSelectedItem }) => {
           height={80}
           className={`${
             selectedItem == "umbrella" ? "border-green-300" : "border-red-300"
-          } object-contain border-6 cursor-pointer rounded-lg flex-shrink-0`}
+          } object-contain border-3 cursor-pointer rounded-lg flex-shrink-0`}
           onClick={() => SelectionHandle("umbrella")}
         />
         <Image
@@ -56,7 +56,7 @@ const ObjectSelectionNav = ({ selectedItem, setSelectedItem }) => {
           height={80}
           className={`${
             selectedItem == "none" ? "border-green-300" : "border-red-300"
-          } object-contain border-6 cursor-pointer rounded-lg flex-shrink-0`}
+          } object-contain border-3 cursor-pointer rounded-lg flex-shrink-0`}
           onClick={() => SelectionHandle("none")}
         />
         <Image
@@ -66,7 +66,7 @@ const ObjectSelectionNav = ({ selectedItem, setSelectedItem }) => {
           height={80}
           className={`${
             selectedItem == "eraser" ? "border-green-300" : "border-red-300"
-          } object-contain border-6 cursor-pointer rounded-lg flex-shrink-0 md:hidden`}
+          } object-contain border-3 cursor-pointer rounded-lg flex-shrink-0 md:hidden`}
           onClick={() => SelectionHandle("eraser")}
         />
       </div>
