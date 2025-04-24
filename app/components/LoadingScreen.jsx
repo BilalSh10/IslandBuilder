@@ -74,6 +74,7 @@ export default function LoadingScreen({ started, onStarted }) {
                 <h3 className="font-semibold mb-2 drop-shadow-lg">🕹️ Controls</h3>
                 <ul className="list-disc list-inside space-y-1 drop-shadow-lg">
                   <li>🖱️ Look around with mouse</li>
+                  <li>Click on the water to build sands</li>
                   <li>Press sheft Key to delete objects</li>
                   <li>Select an object to build</li>
                   <li>Click on the object that u have built to rotate it</li>
