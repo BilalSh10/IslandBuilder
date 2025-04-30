@@ -1,115 +1,6 @@
-// // "use client";
-// import React, { useState } from "react";
-// import { OrbitControls, Sky, ContactShadows } from "@react-three/drei";
-// import Water from "./Water";
-// import { Perf } from "r3f-perf";
-// import Cubes from "./SandCube";
-// import Plane from "./Plane";
-// import Trees from "./Trees";
-// import Chairs from "./Chair";
-// import Houses from "./House";
-// import Umbrellas from "./Umbrella";
-// import FoggyBox from "./FoggyBox";
-
-// const Experince = ({ selectedItem }) => {
-//   const [cubes, setCubes] = useState([]);
-//   const [trees, setTrees] = useState([]);
-//   const [chairs, setTChairs] = useState([]);
-//   const [houses, setHouses] = useState([]);
-//   const [umbrellas, setUmbrellas] = useState([]);
-
-//   const addCube = (cube) => {
-//     setCubes([...cubes, cube]);
-//   };
-
-//   const removeCube = (id) => {
-//     setCubes(cubes.filter((cube) => cube.id !== id));
-//   };
-
-//   const addTree = (tree) => {
-//     setTrees([...trees, tree]);
-//   };
-
-//   const removeTree = (id) => {
-//     setTrees(trees.filter((tree) => tree.id !== id));
-//   };
-//   const addChair = (chair) => {
-//     setTChairs([...chairs, chair]);
-//   };
-
-//   const removeChair = (id) => {
-//     setTChairs(chairs.filter((chair) => chair.id !== id));
-//   };
-
-//   const addHouse = (house) => {
-//     setHouses([...houses, house]);
-//   };
-
-//   const removeHouse = (id) => {
-//     setHouses(houses.filter((house) => house.id !== id));
-//   };
-
-//   const addUmbrella = (umbrella) => {
-//     setUmbrellas([...umbrellas, umbrella]);
-//   };
-
-//   const removeUmbrella = (id) => {
-//     setUmbrellas(umbrellas.filter((umbrella) => umbrella.id !== id));
-//   };
-
-//   return (
-//     <>
-//       {/* <Perf position="top-left" /> */}
-//       <OrbitControls
-//         makeDefault
-//         maxPolarAngle={Math.PI / 2.4}
-//         minPolarAngle={Math.PI / 5}
-//       />
-//       <Cubes
-//         cubes={cubes}
-//         removeCube={removeCube}
-//         addTree={addTree}
-//         addChair={addChair}
-//         addHouse={addHouse}
-//         addUmbrella={addUmbrella}
-//         selectedItem={selectedItem}
-//       />
-//       <Trees
-//         trees={trees}
-//         removeTree={removeTree}
-//         selectedItem={selectedItem}
-//       />
-//       <Chairs
-//         chairs={chairs}
-//         removeChair={removeChair}
-//         selectedItem={selectedItem}
-//       />
-//       <Houses
-//         houses={houses}
-//         removeHouse={removeHouse}
-//         selectedItem={selectedItem}
-//       />
-//       <Umbrellas
-//         umbrellas={umbrellas}
-//         removeUmbrella={removeUmbrella}
-//         selectedItem={selectedItem}
-//       />
-//       <Plane addCube={addCube} />
-
-//       {/* <FoggyBox /> */}
-
-//       <Water />
-//       <Sky />
-//     </>
-//   );
-// };
-
-// export default Experince;
-
-
-// "use client";
+"use client";
 import React, { useState } from "react";
-import { OrbitControls, Sky, ContactShadows } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import Water from "./Water";
 import { Perf } from "r3f-perf";
 import Cubes from "./SandCube";
@@ -118,7 +9,6 @@ import Trees from "./Trees";
 import Chairs from "./Chair";
 import Houses from "./House";
 import Umbrellas from "./Umbrella";
-import FoggyBox from "./FoggyBox";
 
 const Experince = ({ selectedItem }) => {
   const [cubes, setCubes] = useState([]);
@@ -173,10 +63,10 @@ const Experince = ({ selectedItem }) => {
         makeDefault
         maxPolarAngle={Math.PI / 2.4}
         minPolarAngle={Math.PI / 5}
-        minDistance={10}  // Minimum zoom distance
+        minDistance={10} // Minimum zoom distance
         maxDistance={55} // Maximum zoom distance
         enableZoom={true}
-        zoom0={20}       // Initial zoom distance
+        zoom0={20} // Initial zoom distance
       />
       <Cubes
         cubes={cubes}
@@ -208,14 +98,7 @@ const Experince = ({ selectedItem }) => {
         selectedItem={selectedItem}
       />
       <Plane addCube={addCube} />
-
-      {/* <FoggyBox /> */}
-
       <Water />
-      <Sky 
-        sunPosition={[0, 1, 0]}
-        sunScale={0.25}
-      />
     </>
   );
 };

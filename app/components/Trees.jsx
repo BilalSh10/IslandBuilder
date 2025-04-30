@@ -28,7 +28,6 @@ function TreesModel({ position, onClick, nodes }) {
             item.rotation.z,
           ]}
           scale={[0.5, 1, 0.5]}
-          castShadow
         >
           <meshBasicMaterial map={treeTexture} />
         </mesh>

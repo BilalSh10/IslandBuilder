@@ -50,16 +50,6 @@ const ObjectSelectionNav = ({ selectedItem, setSelectedItem }) => {
           onClick={() => SelectionHandle("umbrella")}
         />
         <Image
-          src="/images/none.png"
-          alt="none"
-          width={80}
-          height={80}
-          className={`${
-            selectedItem == "none" ? "border-green-300" : "border-red-300"
-          } object-contain border-3 cursor-pointer rounded-lg flex-shrink-0`}
-          onClick={() => SelectionHandle("none")}
-        />
-        <Image
           src="/images/eraser.jpg"
           alt="eraser"
           width={80}

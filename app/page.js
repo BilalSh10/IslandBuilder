@@ -5,29 +5,36 @@ import ObjectSelectionNav from "./components/ObjectSelectionNav";
 import { Suspense, useState } from "react";
 import LoadingScreen from "./components/LoadingScreen";
 import AudioPlayer from "./components/AudioPlayer"; // import here
+import { Environment } from "@react-three/drei";
 
 export default function IslandBuilder() {
   const [selectedItem, setSelectedItem] = useState("none");
-  const [started, setStarted] = useState(false);
+  const [isStarted, setIsStarted] = useState(false);
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <Canvas flat camera={{ position: [5, 20, 20], fov: 45 }}>
+        <Environment
+          background={true}
+          files="./industrial_sunset_02_puresky_2k.hdr"
+        />
         <Suspense>
-          {!started ? (
+          {!isStarted ? (
             <LoadingScreen
-              started={started}
-              onStarted={() => setStarted(true)}
+              started={isStarted}
+              onStarted={() => setIsStarted(true)}
             />
           ) : (
-            <Experince selectedItem={selectedItem} />
+            <>
+              <Experince selectedItem={selectedItem} />
+            </>
           )}
         </Suspense>
       </Canvas>
 
-      <AudioPlayer started={started} />
+      <AudioPlayer started={isStarted} />
 
-      {started && (
+      {isStarted && (
         <ObjectSelectionNav
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}

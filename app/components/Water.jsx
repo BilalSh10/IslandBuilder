@@ -24,7 +24,7 @@ const WaterShader = () => {
 
   return (
     <mesh ref={waterRef} rotation={[-Math.PI * 0.5, 0, 0]}>
-      <planeGeometry args={[100, 100, 500, 500]} />
+      <planeGeometry args={[400, 400, 500, 500]} />
       <shaderMaterial
         vertexShader={`
           varying vec2 vUv;
@@ -138,6 +138,11 @@ const WaterShader = () => {
 
           void main(){
               float mixStrength = (vElevation * uColorMultipled + uColorOffset);
+              mixStrength *= smoothstep(0.0, 0.3, vUv.x);
+              mixStrength *= smoothstep(1.0, 0.7, vUv.x);
+              mixStrength *= smoothstep(0.0, 0.3, vUv.y);
+              mixStrength *= smoothstep(1.0, 0.7, vUv.y);
+
               vec3 color = mix(uDepthColor, uSurfaceColor, mixStrength);
               gl_FragColor = vec4(color, 0.7);    
           }

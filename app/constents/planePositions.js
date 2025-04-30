@@ -1,4 +1,4 @@
-const size = 50; // 50x50 grid
+const size = 200; // 200x200 grid
 const spacing = 2; // Space between cubes (assuming each cube is 1 unit)
 const planePositions = [];
 
